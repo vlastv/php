@@ -15,9 +15,11 @@ env:
   - VERSION=7.4 VARIANT=alpine3.12/cli
   - VERSION=7.4 VARIANT=alpine3.12/fpm
   - VERSION=7.4 VARIANT=alpine3.12/zts
+  - VERSION=7.4 VARIANT=alpine3.12/unit
   - VERSION=7.4 VARIANT=alpine3.11/cli
   - VERSION=7.4 VARIANT=alpine3.11/fpm
   - VERSION=7.4 VARIANT=alpine3.11/zts
+  - VERSION=7.4 VARIANT=alpine3.11/unit
   - VERSION=7.3 VARIANT=buster/cli
   - VERSION=7.3 VARIANT=buster/apache
   - VERSION=7.3 VARIANT=buster/fpm

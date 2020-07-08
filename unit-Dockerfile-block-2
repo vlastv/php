@@ -5,7 +5,7 @@ RUN set -eux; \
 		make \
 	; \
 	cd /tmp; \
-	curl -fsSL -o unit.tar.gz "https://unit.nginx.org/download/unit-1.17.0.tar.gz"; \
+	curl -fsSL -o unit.tar.gz "https://unit.nginx.org/download/unit-1.18.0.tar.gz"; \
 	mkdir unit; \
 	tar xzf unit.tar.gz -C "unit" --strip-components=1; \
 	cd unit; \
@@ -14,14 +14,15 @@ RUN set -eux; \
 		--state=/var/lib/unit \
 		--control=unix:/run/control.unit.sock \
 		--pid=/run/unit.pid \
+		--tmp=/tmp \
 	; \
 	./configure php; \
 	make; \
 	make install; \
-	rm -rf /tmp/unit; \
+	rm -rf /tmp/unit /tmp/unit.tar.gz; \
 	\
 	apk del --no-network .build-deps; \
 	\
 	unitd --version
 
-CMD ["unitd", "--no-daemon"]
+CMD ["unitd", "--no-daemon", "--log", "/dev/stderr"]
